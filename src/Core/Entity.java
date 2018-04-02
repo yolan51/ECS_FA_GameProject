@@ -12,12 +12,12 @@ import Core.Components.BaseComponent;
  *
  * @author Yo
  */
-public abstract class Entity{
-    private int id;
+public class Entity{
+    private final int id;
     private EntityStore entityStore;
-    public static int counterId = 0;
+    private static int counterId = 0;
 
-    protected Entity(EntityStore s){
+    public Entity(EntityStore s){
         this.id = setIDValue();
         entityStore = s;
     }
@@ -32,9 +32,9 @@ public abstract class Entity{
         entityStore.addComponents(c);
     }
 
-    public <T extends BaseComponent> T GetComponent()
+    public <T extends BaseComponent> T GetComponent(T comp)
     {
         
-        return entityStore.GetComponent(this);
+        return entityStore.GetComponent(comp,this);
     }
 }

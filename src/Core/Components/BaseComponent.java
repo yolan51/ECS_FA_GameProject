@@ -28,10 +28,10 @@ public class BaseComponent implements ComponentsInterface{
         public Entity Owner;
 
 
-        public BaseComponent(int id, Entity e)
+        public BaseComponent(int ID_, Entity e)
         {
 
-            ID = id;
+            ID = ID_;
             Owner = e;
         }   
 }

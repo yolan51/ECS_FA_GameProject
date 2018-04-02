@@ -39,31 +39,25 @@ public class EntityStore {
             box.Components_.put(component.Owner, component);
 
         }
-        public <T extends BaseComponent> T GetComponent(Entity owner)
+        public <T extends BaseComponent> T GetComponent(T comp,Entity owner)
         {
-            return null;
-//            T comp;
-//            T<BaseComponent> stringA = new T<BaseComponent>();
-//            Box<BaseComponent> box;
-//
-//            // Getting the box
-//            Boxes_.TryGetValue(x.ID_, out box);
-//
-//            // means there's no box for the asked component , so we return null
-//            if (box == null)
-//            {
-//                return null;
-//            }
-//
-//            // From here the box for the specified component exists
-//
-//            BaseComponent component;
-//
-//            // Getting the component from the box 
-//            box.Components_.TryGetValue(owner, out component);
-//
-//            // Returns the component casted to the concrete type or null if the component doesn't exist
-//            return component == null ? null : (T)component;
+            
+            
+            
+            Box<BaseComponent> box = GetBox(comp);
+
+
+            // means there's no box for the asked component , so we return null
+            if (box == null)
+            {
+                return null;
+            }
+
+
+            BaseComponent component = box.Components_.get(owner);
+
+            // Returns the component casted to the concrete type or null if the component doesn't exist
+            return component == null ? null : (T)component;
         }
         public  <T extends BaseComponent> Box<BaseComponent> GetBox(T component)
         {

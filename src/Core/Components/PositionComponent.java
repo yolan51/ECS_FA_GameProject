@@ -14,8 +14,8 @@ import Core.Entity;
 public class PositionComponent extends BaseComponent{
     public float x,y;
 
-    public PositionComponent(int id, Entity e) {
-        super(id, e);
+    public PositionComponent( Entity e) {
+        super(1, e);
     }
     
 }
