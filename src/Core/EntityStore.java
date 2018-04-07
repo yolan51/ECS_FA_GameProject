@@ -18,12 +18,20 @@ public class EntityStore {
         {
             public HashMap<Entity, T> Components_ = new HashMap<>();
         }
-
+        
         /// This dictionnary contains the boxes and stores every components by their type
-        private  HashMap<Integer, Box<BaseComponent>> Boxes = new HashMap<>();
+        private  HashMap<Class<BaseComponent>, Box<BaseComponent>> Boxes = new HashMap<>();
+
+    public HashMap<Class<BaseComponent>, Box<BaseComponent>> getBoxes() {
+        return Boxes;
+    }
+
+    public void setBoxes(HashMap<Class<BaseComponent>, Box<BaseComponent>> Boxes) {
+        this.Boxes = Boxes;
+    }
         
         public <T extends BaseComponent> void addComponents(T component){
-
+            
             Box<BaseComponent> box;
             box = GetBox(component);
 
@@ -32,17 +40,16 @@ public class EntityStore {
             {
                 // Creating a box for the type of component the user wants to store
                 box = new Box<>();
-                Boxes.put(component.ID, box);
+                Boxes.put(component.Type_, box);
             }
 
             // Adding the component to the box
             box.Components_.put(component.Owner, component);
 
         }
+
         public <T extends BaseComponent> T GetComponent(T comp,Entity owner)
-        {
-            
-            
+        {            
             
             Box<BaseComponent> box = GetBox(comp);
 
@@ -59,10 +66,10 @@ public class EntityStore {
             // Returns the component casted to the concrete type or null if the component doesn't exist
             return component == null ? null : (T)component;
         }
-        public  <T extends BaseComponent> Box<BaseComponent> GetBox(T component)
+        protected  <T extends BaseComponent> Box<BaseComponent> GetBox(T component)
         {
             
-            Box<BaseComponent> box = Boxes.get(component.ID);
+            Box<BaseComponent> box = Boxes.get(component.Type_);
 
             return box;
             

@@ -10,28 +10,20 @@ import Core.Entity;
 /**
  *
  * @author Yo
+ * @param <T>
  */
-public class BaseComponent implements ComponentsInterface{
+public class  BaseComponent<T extends BaseComponent> implements ComponentsInterface{
         protected boolean update = false;
 
-        protected static int NEXT_COMPONENT_TYPE_ID_ = 0;
-
-
-        protected static int GetNextComponentTypeId()
-        {
-            return NEXT_COMPONENT_TYPE_ID_++;
-        }
-
-        public int ID;
+        public Class<T> Type_;
 
         // Component's owner
         public Entity Owner;
 
 
-        public BaseComponent(int ID_, Entity e)
+        public BaseComponent(Entity e,Class<T> type)
         {
-
-            ID = ID_;
+            Type_ =type;
             Owner = e;
         }   
 }

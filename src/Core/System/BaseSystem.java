@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Core.Components;
-
-import Core.Entity;
+package Core.System;
 
 /**
  *
  * @author Yo
  */
-public class PositionComponent extends BaseComponent{
-    public float x,y;
-
-    public PositionComponent(Entity e) {
-        super(e,PositionComponent.class);
-    }
+public class BaseSystem {
     
 }

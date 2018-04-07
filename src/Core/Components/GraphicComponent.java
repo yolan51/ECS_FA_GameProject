@@ -11,11 +11,11 @@ import Core.Entity;
  *
  * @author Yo
  */
-public class PositionComponent extends BaseComponent{
+public class GraphicComponent extends BaseComponent{
     public float x,y;
 
-    public PositionComponent(Entity e) {
-        super(e,PositionComponent.class);
+    public GraphicComponent(Entity e) {
+        super(e,GraphicComponent.class);
     }
     
 }
